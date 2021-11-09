@@ -1,3 +1,4 @@
+POT
 backports.statistics==0.1.0
 Cython==0.29.24
 dl==0.1.0
