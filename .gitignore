@@ -1,4 +1,5 @@
 venv/\
 training_testing/Data\
 Logs
-
+venv_lx/\
+Data/\
