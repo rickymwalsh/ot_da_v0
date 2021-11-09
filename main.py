@@ -20,7 +20,7 @@ from multiprocessing.pool import ThreadPool
 import os
 import argparse
 
-sys.path.append('/udd/aackaouy/OT-DA/')
+# sys.path.append('/udd/aackaouy/OT-DA/')
 
 # df = create_config.create_conf(batch_size_l = [32, 64], initial_lr_l = [5e-2, 5e-4],
 #                  loss_funcs = ["dice_coefficient_loss", "dice_coefficient_loss"],

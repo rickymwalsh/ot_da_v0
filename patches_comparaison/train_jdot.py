@@ -2,11 +2,10 @@ import os
 import glob
 import sys
 
-sys.path.append('/udd/aackaouy/OT-DA/')
+# sys.path.append('/udd/aackaouy/OT-DA/')
 
 from unet3d.data import write_data_to_file, open_data_file
 from unet3d.model import isensee2017_model
-from unet3d.training import load_old_model, train_model
 from patches_comparaison.JDOT import JDOT
 
 class Train_JDOT:
@@ -62,49 +61,46 @@ class Train_JDOT:
         else:
             print("Creating new model, this will overwrite your old model")
         jd.compile_model()
-        if self.config.train_jdot:
-            jd.train_model(self.config.epochs)
-        else:
-            jd.train_model_on_source(self.config.epochs)
-        jd.evaluate_model()
+        # if self.config.train_jdot:
+        #     jd.train_model(self.config.epochs)
+        # else:
+        #     jd.train_model_on_source(self.config.epochs)
+        # jd.evaluate_model()
 
         source_data.close()
         target_data.close()
 
-    def fetch_training_data_files(self, return_subject_ids=False):
-        '''
-        Function to get the training files from the source and from the target.
-        We write the source and target samples in two different files
-        :param return_subject_ids:
-        :return:
-        '''
-        source_data_files = list()
-        target_data_files = list()
-        subject_ids_source = list()
-        subject_ids_target = list()
-        for subject_dir in glob.glob(
-                os.path.join(os.path.dirname(__file__), "../Data/data_" + self.config.data_set, "training", "*")):
-            subject_center = subject_dir[-9:-7]  # Retrieve for the MICCAI16 data-set the center of the patient
+def fetch_training_data_files(self, return_subject_ids=False):
+    '''
+    Function to get the training files from the source and from the target.
+    We write the source and target samples in two different files
+    :param return_subject_ids:
+    :return:
+    '''
+    source_data_files = list()
+    target_data_files = list()
+    subject_ids_source = list()
+    subject_ids_target = list()
+    for subject_dir in glob.glob(
+            # os.path.join(os.path.dirname(__file__), "../Data/data_" + self.config.data_set, "training", "*")):
+            os.path.join(os.path.dirname(__file__), '..', 'Data', 'SCSeg', '*')):
+        
+        subject_ids_source.append(os.path.basename(subject_dir))
+        subject_files = list()
+        for modality in ['t2_iso_onT2srig_nl', 'labelLesion_iso_bin']:
+            subject_files.append(
+                os.path.join(subject_dir, 'SC', 'res', modality + '.nii.gz'))
+        source_data_files.append(tuple(subject_files))
+        
+        subject_ids_target.append(os.path.basename(subject_dir))
+        subject_files = list()
+        for modality in ['t2sMerge_iso', 'labelLesion_iso_bin']:
+            subject_files.append(
+                os.path.join(subject_dir, 'SC', 'res', modality + '.nii.gz'))
+        target_data_files.append(tuple(subject_files))
 
-            if subject_center in self.config.source_center or self.config.source_center == "All":
-                subject_ids_source.append(os.path.basename(subject_dir))
-                subject_files = list()
-                for modality in self.config.training_modalities + [
-                    "./" + self.config.GT]:  # Autre solution ? "/ManualSegmentation/ pour miccai16"
-                    subject_files.append(
-                    os.path.join(subject_dir, modality + ".nii.gz"))  # + "/Preprocessed/ pour miccai16
-                source_data_files.append(tuple(subject_files))
-
-            if subject_center in self.config.target_center or self.config.target_center == "All":
-                subject_ids_target.append(os.path.basename(subject_dir))
-                subject_files = list()
-                for modality in self.config.training_modalities + [
-                    "./" + self.config.GT]:  # Autre solution ? "/ManualSegmentation/ pour miccai16"
-                    subject_files.append(
-                        os.path.join(subject_dir, modality + ".nii.gz"))  # + "/Preprocessed/ pour miccai16
-                target_data_files.append(tuple(subject_files))
-
-        if return_subject_ids:
-            return source_data_files, target_data_files, subject_ids_source, subject_ids_target
-        else:
-            return source_data_files, target_data_files
+    if return_subject_ids:
+        return source_data_files, target_data_files, subject_ids_source, subject_ids_target
+    else:
+        return source_data_files, target_data_files
+    
