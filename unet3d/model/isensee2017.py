@@ -1,7 +1,7 @@
 from functools import partial
 
 from tensorflow.keras.layers import Input, LeakyReLU, Add, UpSampling3D, Activation, SpatialDropout3D, Conv3D
-from tensorflow.keras.engine import Model
+from tensorflow.keras import Model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import categorical_crossentropy
 import tensorflow.keras.backend as K

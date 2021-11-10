@@ -9,7 +9,7 @@ import numpy as np
 from tensorflow.keras.utils import Sequence
 #--------FG E
 from tensorflow.keras import backend as K
-from tensorflow.keras.engine import Input, Model
+from tensorflow.keras import Input, Model
 from tensorflow.keras.layers import Conv3D, MaxPooling3D, UpSampling3D, Activation, BatchNormalization, PReLU, Deconvolution3D
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.initializers import glorot_normal
