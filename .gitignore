@@ -3,3 +3,5 @@ training_testing/Data\
 Logs
 venv_lx/\
 Data/\
+__pycache__/
+*/__pycache__/
