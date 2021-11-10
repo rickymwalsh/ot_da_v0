@@ -18,11 +18,11 @@ class Config:
         if test == True:
             self.data_set="test"
             self.epochs = 1
-            self.all_modalities = ["FLAIR-include"]
+            self.all_modalities = ["T2", "T2s"]
         else:
             self.data_set="miccai16_no_norm" # data_self.data_set is the name of the directory in which the patients are
             self.epochs = epochs  # cutoff the training after this many epochs
-            self.all_modalities = ["T2"] # Modalities to use during training
+            self.all_modalities = ["T2", "T2s"] # Modalities to use during training
             #The first modality will be the one on which the intensity ceil will be applied
 
         self.niseko = niseko
