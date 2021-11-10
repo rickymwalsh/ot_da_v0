@@ -18,20 +18,19 @@ class Test:
         testing_data_files = list()
         subject_ids = list()
         for subject_dir in glob.glob(
-                os.path.join(os.path.dirname(__file__), "../Data/data_" + self.config.data_set, "testing", "*")):
-            #            for subject_dir in glob.glob(os.path.join(os.path.dirname(__file__), "brain_set_4", "*")):
+                os.path.join(os.path.dirname(__file__), '..', 'Data', 'SCSeg', '*')):
             subject_ids.append(os.path.basename(subject_dir))
             subject_files = list()
-            #        for modality in config["training_modalities"] + ["T2-norm-include"]:
-            for modality in self.config.training_modalities + ["./"+self.config.GT]: #"/ManualSegmentation/"
-                subject_files.append(os.path.join(subject_dir+"/", modality + ".nii.gz"))
+            for modality in ['t2_iso_onT2srig_nl', 'labelLesion_iso_bin']:
+                subject_files.append(
+                    os.path.join(subject_dir, 'SC', 'res', modality + '.nii.gz'))
             testing_data_files.append(tuple(subject_files))
 
         if return_subject_ids:
             return testing_data_files, subject_ids
         else:
             return testing_data_files
-
+        
 
     def main(self, overwrite_data=True):
         self.config.validation_split = 0.0
