@@ -14,14 +14,15 @@ from tensorflow.keras.layers import Conv3D, MaxPooling3D, UpSampling3D, Activati
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.initializers import glorot_normal
 from tensorflow.keras import regularizers
+from tensorflow.keras.layers import concatenate
 from unet3d.metrics import dice_coefficient_loss, get_label_dice_coefficient_function, dice_coefficient
 
 K.set_image_data_format("channels_first")
 
-try:
-    from keras.engine import merge
-except ImportError:
-    from keras.layers.merge import concatenate
+# try:
+#     from tensorflow.keras.engine import merge
+# except ImportError:
+    # from tensorflow.keras.layers import concatenate
 
 
 def unet_model_3d(input_shape, pool_size=(2, 2, 2), n_labels=1, initial_learning_rate=0.00001, deconvolution=False,
