@@ -126,9 +126,9 @@ for i in range(df.shape[0]): #df.shape[0]
     train_jd = train_jdot.Train_JDOT(conf)
     train_jd.main(overwrite_data=conf.overwrite_data, overwrite_model=conf.overwrite_model)
 
-    # test = create_test.Test(conf)
-    # test.main(overwrite_data=conf.overwrite_data)
+    test = create_test.Test(conf)
+    test.main(overwrite_data=conf.overwrite_data)
 
-    # eval = evaluate.Evaluate(conf)
-    # eval.main()
+    eval = evaluate.Evaluate(conf)
+    eval.main()
     K.clear_session()
