@@ -46,7 +46,7 @@ parser.add_argument("-callback", default="False", type=str, help="Boolean for th
 parser.add_argument("-dist", default="sqeuclidean", type=str, help="Distance used to compute the Optimal Transport. Can be sqeuclidean or dice.")
 parser.add_argument("-OT_depth", default=5, type=int, help="Depth to compute the OT on. 5 is the most compact. 9 is the deepest.")
 parser.add_argument("-load_model", default="True", type=str, help="Wether to load the base model or not")
-parser.add_argument("-split_list", default='(([0,1,2,3], [4]),([0,1,2,3], [4]))', type=str, help="Tuple of tuples, first level is for source/target, second level is for training/validation")
+parser.add_argument("-split_list", default='(([0], [1]),([0], [1]))', type=str, help="Tuple of tuples, first level is for source/target, second level is for training/validation")
 parser.add_argument("-intensity_ceil", default=None, type=float, help="Intensity ceil to select the patches between [-1;1]")
 parser.add_argument("-skip_blank", default="False", type=str, help="If set to True, only patches with lesions will be kept.")
 args = parser.parse_args()
