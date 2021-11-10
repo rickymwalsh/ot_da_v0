@@ -1,6 +1,6 @@
-from keras import backend as K
-from keras import Model
-from keras.callbacks import LambdaCallback
+from tensorflow.keras import backend as K
+from tensorflow.keras import Model
+from tensorflow.keras.callbacks import LambdaCallback
 from patches_comparaison.generator_jdot import get_batch_jdot, multi_proc_augment_data, get_patches_index_list
 from scipy.spatial.distance import cdist, cosine, euclidean, dice
 from unet3d.utils import pickle_load
@@ -11,7 +11,7 @@ import numpy as np
 from numpy import all
 import ot
 from training_testing import create_test
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import time
 import random
 import sys

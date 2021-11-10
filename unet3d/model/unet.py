@@ -6,14 +6,14 @@ sys.path.append('/home/fgalassi/Downloads/3DUnetCNN-master/')
 
 import numpy as np
 #--------FG S
-from keras.utils import Sequence
+from tensorflow.keras.utils import Sequence
 #--------FG E
-from keras import backend as K
-from keras.engine import Input, Model
-from keras.layers import Conv3D, MaxPooling3D, UpSampling3D, Activation, BatchNormalization, PReLU, Deconvolution3D
-from keras.optimizers import Adam
-from keras.initializers import glorot_normal
-from keras import regularizers
+from tensorflow.keras import backend as K
+from tensorflow.keras.engine import Input, Model
+from tensorflow.keras.layers import Conv3D, MaxPooling3D, UpSampling3D, Activation, BatchNormalization, PReLU, Deconvolution3D
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.initializers import glorot_normal
+from tensorflow.keras import regularizers
 from unet3d.metrics import dice_coefficient_loss, get_label_dice_coefficient_function, dice_coefficient
 
 K.set_image_data_format("channels_first")

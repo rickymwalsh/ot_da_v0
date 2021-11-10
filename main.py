@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 import matplotlib
 from patches_comparaison import compare_patches, intensities
-from keras import backend as K
+from tensorflow.keras import backend as K
 from Config import create_config
 from scipy.spatial.distance import cdist
 from multiprocessing.pool import ThreadPool

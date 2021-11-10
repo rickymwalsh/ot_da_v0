@@ -1,10 +1,10 @@
 from functools import partial
 
-from keras.layers import Input, LeakyReLU, Add, UpSampling3D, Activation, SpatialDropout3D, Conv3D
-from keras.engine import Model
-from keras.optimizers import Adam
-from keras.losses import categorical_crossentropy
-import keras.backend as K
+from tensorflow.keras.layers import Input, LeakyReLU, Add, UpSampling3D, Activation, SpatialDropout3D, Conv3D
+from tensorflow.keras.engine import Model
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.losses import categorical_crossentropy
+import tensorflow.keras.backend as K
 import re
 from .unet import create_convolution_block, concatenate
 from ..metrics import weighted_dice_coefficient_loss, dice_coef, jaccard_distance_loss, dice_coef_loss
