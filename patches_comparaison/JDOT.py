@@ -100,7 +100,8 @@ class JDOT():
             :return: Source_loss + \beta * \gamma * target_loss
             The more two samples are connected by \gamma the more we wish they have similar predictions.
             '''
-            truth_source = y_true[:self.batch_size, :]  # source true labels
+            # source true labels - convert to float32 to match the prediction types.
+            truth_source = y_true[:self.batch_size, :].astype(np.float32)
             prediction_source = y_pred[:self.batch_size, :]  # source prediction
             prediction_target = y_pred[self.batch_size:, :] # target prediction
 
@@ -119,7 +120,8 @@ class JDOT():
             :param y_pred:
             :return:
             '''
-            truth_source = y_true[:self.batch_size, :]  # source true labels
+            # source true labels - convert to float32 to match the prediction types.
+            truth_source = y_true[:self.batch_size, :].astype(np.float32)  
             prediction_source = y_pred[:self.batch_size, :]  # source prediction
             prediction_target = y_pred[self.batch_size:, :] # target prediction
             '''
