@@ -11,7 +11,7 @@ from unet3d.metrics import (dice_coefficient, dice_coefficient_loss, dice_coef, 
 from unet3d.generalized_loss import generalized_dice_loss
 
 
-K.set_image_dim_ordering('th')
+K.set_image_data_format('th')
 
 
 # learning rate schedule
