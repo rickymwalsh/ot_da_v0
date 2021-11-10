@@ -87,14 +87,14 @@ class Train_JDOT:
             
             subject_ids_source.append(os.path.basename(subject_dir))
             subject_files = list()
-            for modality in ['t2_iso_onT2srig_nl', 'labelLesion_iso_bin']:
+            for modality in ['crop_t2','crop_t2s','crop_lesion']:
                 subject_files.append(
                     os.path.join(subject_dir, 'SC', 'res', modality + '.nii.gz'))
             source_data_files.append(tuple(subject_files))
             
             subject_ids_target.append(os.path.basename(subject_dir))
             subject_files = list()
-            for modality in ['t2sMerge_iso', 'labelLesion_iso_bin']:
+            for modality in ['crop_t2','crop_t2s','crop_lesion']:
                 subject_files.append(
                     os.path.join(subject_dir, 'SC', 'res', modality + '.nii.gz'))
             target_data_files.append(tuple(subject_files))

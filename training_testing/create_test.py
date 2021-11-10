@@ -21,7 +21,7 @@ class Test:
                 os.path.join(os.path.dirname(__file__), '..', 'Data', 'SCSeg', '*')):
             subject_ids.append(os.path.basename(subject_dir))
             subject_files = list()
-            for modality in ['t2_iso_onT2srig_nl', 'labelLesion_iso_bin']:
+            for modality in ['crop_t2','crop_t2s','crop_lesion']:
                 subject_files.append(
                     os.path.join(subject_dir, 'SC', 'res', modality + '.nii.gz'))
             testing_data_files.append(tuple(subject_files))
