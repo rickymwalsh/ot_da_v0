@@ -1,3 +1,4 @@
+import tensorflow as tf
 from tensorflow.keras import backend as K
 from tensorflow.keras import Model
 from tensorflow.keras.callbacks import LambdaCallback
@@ -101,7 +102,7 @@ class JDOT():
             The more two samples are connected by \gamma the more we wish they have similar predictions.
             '''
             # source true labels - convert to float32 to match the prediction types.
-            truth_source = y_true[:self.batch_size, :].astype(np.float32)
+            truth_source = tf.cast(y_true[:self.batch_size, :], tf.float32)
             prediction_source = y_pred[:self.batch_size, :]  # source prediction
             prediction_target = y_pred[self.batch_size:, :] # target prediction
 
@@ -121,7 +122,7 @@ class JDOT():
             :return:
             '''
             # source true labels - convert to float32 to match the prediction types.
-            truth_source = y_true[:self.batch_size, :].astype(np.float32)  
+            truth_source = tf.cast(y_true[:self.batch_size, :], tf.float32)
             prediction_source = y_pred[:self.batch_size, :]  # source prediction
             prediction_target = y_pred[self.batch_size:, :] # target prediction
             '''
